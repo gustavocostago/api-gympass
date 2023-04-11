@@ -7,5 +7,5 @@ app
     port: env.PORT,
   })
   .then(() => {
-    console.log('online')
+    console.log('\n<---------SERVIDOR-ONLINE--------->\n')
   })
