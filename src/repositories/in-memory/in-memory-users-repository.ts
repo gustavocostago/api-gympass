@@ -9,7 +9,7 @@ export class InMemoryUsersRepository implements UsersRepository {
     if (!user) {
       return null
     }
-    return null
+    return user
   }
   async create(data: Prisma.UserCreateInput) {
     const user = {
