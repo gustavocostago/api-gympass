@@ -34,10 +34,11 @@ export class CheckInUseCase {
       { latitude: userLatitude, longitude: userLongitude },
       { latitude: gym.latitude.toNumber(), longitude: gym.longitude.toNumber() }
     )
-
-    if (distance > 0.1) {
+    const MAX_DISTANCE_IN_KM = 0.1
+    if (distance > MAX_DISTANCE_IN_KM) {
       throw new Error()
     }
+
     const checkInOnSameDay = await this.checkInsRepository.findByUserIdOnDate(
       userId,
       new Date()

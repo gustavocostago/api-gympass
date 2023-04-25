@@ -21,8 +21,8 @@ describe('Check-in Services', () => {
       title: 'teste',
       phone: '9999',
       description: 'teste',
-      latitude: new Decimal(0),
-      longitude: new Decimal(0),
+      latitude: new Decimal(-15.5947807),
+      longitude: new Decimal(-56.0638225),
     })
   })
   afterEach(() => {
