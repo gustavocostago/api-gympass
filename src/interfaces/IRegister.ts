@@ -1,4 +1,4 @@
-import { Prisma, User } from '@prisma/client'
+import { User } from '@prisma/client'
 
 export interface IRegister {
   name: string
@@ -8,10 +8,4 @@ export interface IRegister {
 
 export interface IRegisterResponse {
   user: User
-}
-
-export interface UsersRepository {
-  findById(id: string): Promise<User | null>
-  findByEmail(email: string): Promise<User | null>
-  create(data: Prisma.UserCreateInput): Promise<User>
 }
