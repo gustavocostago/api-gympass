@@ -1,10 +1,7 @@
-import {
-  IRegister,
-  IRegisterResponse,
-  UsersRepository,
-} from '@/interfaces/IRegister'
+import { IRegister, IRegisterResponse } from '@/interfaces/IRegister'
 import { hash } from 'bcryptjs'
 import { UserAlreadyExistsError } from './errors/user-already-exits-error'
+import { UsersRepository } from '@/repositories/users-repository'
 
 export class RegisterService {
   constructor(private usersRepository: UsersRepository) {}
