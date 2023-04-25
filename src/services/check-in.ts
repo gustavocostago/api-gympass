@@ -34,6 +34,7 @@ export class CheckInUseCase {
       { latitude: userLatitude, longitude: userLongitude },
       { latitude: gym.latitude.toNumber(), longitude: gym.longitude.toNumber() }
     )
+    // console.log(Math.round(distance) + 'KM de distancia')
     const MAX_DISTANCE_IN_KM = 0.1
     if (distance > MAX_DISTANCE_IN_KM) {
       throw new Error()
@@ -43,6 +44,7 @@ export class CheckInUseCase {
       userId,
       new Date()
     )
+
     if (checkInOnSameDay) {
       throw new Error()
     }

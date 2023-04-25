@@ -32,8 +32,8 @@ describe('Check-in Services', () => {
     const { checkIn } = await sut.execute({
       gymId: 'gym-01',
       userId: 'user-02',
-      userLatitude: 0,
-      userLongitude: 0,
+      userLatitude: -15.5947807,
+      userLongitude: -56.0638225,
     })
     expect(checkIn.id).toEqual(expect.any(String))
   })
@@ -42,15 +42,15 @@ describe('Check-in Services', () => {
     await sut.execute({
       gymId: 'gym-01',
       userId: 'user-01',
-      userLatitude: 0,
-      userLongitude: 0,
+      userLatitude: -15.5947807,
+      userLongitude: -56.0638225,
     })
     vi.setSystemTime(new Date(2023, 0, 20, 8, 0, 0))
     const { checkIn } = await sut.execute({
       gymId: 'gym-01',
       userId: 'user-01',
-      userLatitude: 0,
-      userLongitude: 0,
+      userLatitude: -15.5947807,
+      userLongitude: -56.0638225,
     })
     expect(checkIn.id).toEqual(expect.any(String))
   })
@@ -61,11 +61,11 @@ describe('Check-in Services', () => {
       phone: '9999',
       description: 'teste',
       latitude: new Decimal(-15.5832006),
-      longitude: new Decimal(56.1466425),
+      longitude: new Decimal(-56.1466425),
     })
 
-    await expect(() => {
-      sut.execute({
+    expect(async () => {
+      await sut.execute({
         gymId: 'gym-02',
         userId: 'user-01',
         userLatitude: -15.5947807,
