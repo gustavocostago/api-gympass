@@ -4,11 +4,14 @@ import { ZodError } from 'zod'
 import { env } from 'env'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUi from '@fastify/swagger-ui'
+import fastifyJwt from '@fastify/jwt'
 
 export const app = fastify({
   logger: false,
 })
-
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+})
 app.register(fastifySwagger, {
   swagger: {
     info: {
