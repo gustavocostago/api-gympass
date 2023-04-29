@@ -1,11 +1,14 @@
 import fastify from 'fastify'
-import { usersRoutes } from './http/controllers/users/routes'
-import { ZodError } from 'zod'
-import { env } from 'env'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUi from '@fastify/swagger-ui'
 import fastifyJwt from '@fastify/jwt'
+
+import { env } from 'env'
+import { ZodError } from 'zod'
+
+import { usersRoutes } from './http/controllers/users/routes'
 import { gymRoutes } from './http/controllers/gyms/routes'
+import { checkInsRoutes } from './http/controllers/check-ins/routes'
 
 export const app = fastify({
   logger: false,
@@ -27,6 +30,7 @@ app.register(fastifySwaggerUi, {
 })
 app.register(usersRoutes)
 app.register(gymRoutes)
+app.register(checkInsRoutes)
 
 app.setErrorHandler((error, _request, reply) => {
   if (error instanceof ZodError) {

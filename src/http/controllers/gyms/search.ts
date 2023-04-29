@@ -3,15 +3,15 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
 export async function search(request: FastifyRequest, reply: FastifyReply) {
-  const searchGymBodySchema = z.object({
-    q: z.string(),
+  const searchGymQuerySchema = z.object({
+    q: z.coerce.string(),
     page: z.coerce.number().min(1).default(1),
   })
-  const { q, page } = searchGymBodySchema.parse(request.body)
+  const { q, page } = searchGymQuerySchema.parse(request.query)
 
   const searchGymService = makeSearchGymsService()
 
-  const { gyms } = await searchGymService.add({
+  const { gyms } = await searchGymService.search({
     query: q,
     page,
   })

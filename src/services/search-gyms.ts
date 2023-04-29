@@ -13,7 +13,10 @@ export interface ISearchGymResponse {
 export class SearchGymService {
   constructor(private gymRepository: GymsRepository) {}
 
-  async add({ query, page }: ISearchGymRequest): Promise<ISearchGymResponse> {
+  async search({
+    query,
+    page,
+  }: ISearchGymRequest): Promise<ISearchGymResponse> {
     const gyms = await this.gymRepository.searchMany(query, page)
     return {
       gyms,
