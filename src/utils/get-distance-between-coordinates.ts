@@ -32,3 +32,15 @@ export function getDistanceBetweenCoordinates(
 
   return dist
 }
+
+// //pedra 90
+// const to: Coordinate = {
+//   latitude: -15.6337389,
+//   longitude: -55.9884282,
+// }
+// const from: Coordinate = {
+//   latitude: -15.6142378,
+//   longitude: -56.0851705,
+// }
+// const distance = getDistanceBetweenCoordinates(from, to)
+// console.log(distance)
