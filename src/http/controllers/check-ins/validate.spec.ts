@@ -12,7 +12,7 @@ describe('Validate Check-In (e2e)', () => {
     await app.close()
   })
   it('should be able to validate check-in', async () => {
-    const { token } = await createAndAuthenticateUser(app)
+    const { token } = await createAndAuthenticateUser(app, true)
 
     const gym = await prisma.gym.create({
       data: {
