@@ -25,7 +25,7 @@ describe('Search Gyms Services', () => {
       latitude: -202012.3333,
       longitude: -20320012.222,
     })
-    const { gyms } = await sut.add({
+    const { gyms } = await sut.search({
       query: 'jacarezinho',
       page: 1,
     })
@@ -42,7 +42,7 @@ describe('Search Gyms Services', () => {
         longitude: -20320012.222,
       })
     }
-    const { gyms } = await sut.add({
+    const { gyms } = await sut.search({
       query: 'jacarezinho',
       page: 2,
     })
