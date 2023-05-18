@@ -1,6 +1,7 @@
-import { makeSearchGymsService } from '@/services/factories/make-search-gyms-service'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
+
+import { makeSearchGymsService } from '@/services/factories/make-search-gyms-service'
 
 export async function search(request: FastifyRequest, reply: FastifyReply) {
   const searchGymQuerySchema = z.object({
