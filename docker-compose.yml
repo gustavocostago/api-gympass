@@ -1,6 +1,6 @@
 version: '3'
 services:
-  database-gympass:  
+  database-gympass:
     image: bitnami/postgresql
     ports:
       - 5432:5432
@@ -8,3 +8,7 @@ services:
       - POSTGRESQL_USERNAME=docker
       - POSTGRESQL_PASSWORD=docker
       - POSTGRESQL_DATABASE=bd_gympass
+  redis-gympass:
+    image: redis
+    ports:
+      - 6379:6379
