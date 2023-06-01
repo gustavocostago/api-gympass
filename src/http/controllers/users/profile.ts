@@ -5,7 +5,7 @@ import { makeGetUserProfileService } from '@/services/factories/make-get-user-pr
 
 export async function profile(request: FastifyRequest, reply: FastifyReply) {
   const getUserProfile = makeGetUserProfileService()
-  const insertRedis = await client.get('User')
+  const insertRedis = await client.get(request.user.sub)
   if (insertRedis) {
     return reply.status(200).send(JSON.parse(insertRedis))
   }
@@ -16,6 +16,8 @@ export async function profile(request: FastifyRequest, reply: FastifyReply) {
     ...user,
     password_hash: undefined,
   }
-  await client.set('User', JSON.stringify(data), { EX: 1000 })
+  await client.set(user.id, JSON.stringify(data), {
+    EX: 1000,
+  })
   return reply.status(200).send(data)
 }
