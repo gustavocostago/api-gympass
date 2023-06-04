@@ -37,4 +37,5 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
-          script: whoami
+          passphrase: ${{ secrets.SERVER_PASSPHRASE }}
+          script: cd ${{ secrets.PROJECT_PATH }} && git pull && pm2 restart server
