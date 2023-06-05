@@ -12,7 +12,7 @@ import { gymRoutes } from './http/controllers/gyms/routes'
 import { checkInsRoutes } from './http/controllers/check-ins/routes'
 
 export const app = fastify({
-  logger: false,
+  logger: true,
 })
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
