@@ -4,7 +4,7 @@
 name: Node.js CI
 
 on:
-  pull_request:
+  push:
     branches: [master]
 
 jobs:
@@ -21,4 +21,4 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           passphrase: ${{ secrets.SERVER_PASSPHRASE }}
-          script: cd ${{ secrets.PROJECT_PATH }} && git pull && npm run build && pm2 restart server
+          script: cd ${{ secrets.PROJECT_PATH }} && git pull && npm run build && pm2 restart server --update-env
