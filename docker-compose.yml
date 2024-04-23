@@ -1,6 +1,19 @@
-version: '3'
+version: '3.8'
+
 services:
-  database-gympass:
+  backend:
+    depends_on:
+      - database
+      - redis
+    image: backend/gympass:v3
+    build: .
+    ports:
+      - 25000:25000
+    env_file:
+      - .env
+    networks:
+      - monitoring
+  database:
     image: bitnami/postgresql
     ports:
       - 5432:5432
@@ -8,7 +21,14 @@ services:
       - POSTGRESQL_USERNAME=docker
       - POSTGRESQL_PASSWORD=docker
       - POSTGRESQL_DATABASE=bd_gympass
-  redis-gympass:
+    networks:
+      - monitoring
+  redis:
     image: redis
     ports:
       - 6379:6379
+    networks:
+      - monitoring
+networks:
+  monitoring:
+    external: true
